@@ -57,22 +57,30 @@
                         <div class="stats shadow">
                             <div class="stat flex">
                                 <img src="./assets/coin.png" alt="" class="w-6 h-6">
-                                <h4>0 BDT</h4>
+                                <h4 id="totalDonation">0 BDT</h4>
                             </div>
                         </div>
                     </div>
                     <div class="flex flex-col gap-6">
                     <h2 class="card-title">Donate for Flood at Noakhali, Bangladesh</h2>
                     <p>The recent floods in Noakhali have caused significant damage to homes and infrastructure. Your donation will help provide essential supplies to those affected by this disaster. Every contribution, big or small, makes a difference. Please join us in supporting the relief efforts and making a positive impact on the lives of those in need.</p>
-                    <input type="text" placeholder="Write Donation Amount Here" class="input input-bordered  w-full" />
-                    <h4 class="btn btn-ghost text-xl px-8 bg-[#ABD36B]">Donate Now</h4>
+                    <input id="input-value" type="text" placeholder="Write Donation Amount Here" class="input input-bordered  w-full" />
+                    <h4 id="donate-btn" class="btn btn-ghost text-xl px-8 bg-[#ABD36B]">Donate Now</h4>
                 </div>
             </div>
             </div>
         </div>
     </div>
     
-    
+    <!-- modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 
+    flex justify-center items-center">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-bold">Congratulations!</h2>
+          <p>Thank you for your generous donation of <span id="modal-amount"></span> BDT.</p>
+          <button id="closeModal" class="btn btn-primary mt-4">Close</button>
+      </div>
+  </div>
 
 <script src="./index.js"></script>    
 </body>
