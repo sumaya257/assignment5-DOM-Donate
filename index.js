@@ -43,9 +43,7 @@ function handleDonation(cardId) {
 // Find the card title within the parent card
       const cardTitle = parentCard.querySelector('.card-title').innerText;
       const historyItem = document.createElement('div');
-      historyItem.style.border = '1px solid #ccc';
-      historyItem.style.margin = '8px 0'; 
-      historyItem.style.padding = '8px'; 
+      historyItem.classList.add('border', 'border-gray-300', 'mt-2', 'p-2', 'rounded-lg', 'shadow-sm', 'md:mt-4');
       const currentDateTime = new Date();
       historyItem.innerHTML = `<strong>${inputValue} BDT for "${cardTitle}"</strong><br>${currentDateTime.toLocaleString()}`;
       document.getElementById('history-item').appendChild(historyItem);
