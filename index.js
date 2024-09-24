@@ -1,66 +1,80 @@
+// creating common function for active and non-active button
+function showSectionById(id){
+  // hide all the section
+  document.getElementById('donationSection').classList.add('hidden')
+  document.getElementById('historySection').classList.add('hidden')
+  //show the section with provide id as parameter
+  document.getElementById(id).classList.remove('hidden')
+}
+// active history button and color
+document.getElementById('historyBtn').addEventListener('click',function(){
+  historyBtn.classList.add('bg-[#ABD36B]')
+  document.getElementById('donationBtn').classList.remove('bg-[#ABD36B]')
+  showSectionById('historySection')
+})
+// active donation button and color
+document.getElementById('donationBtn').addEventListener('click',function(){
+  donationBtn.classList.add('bg-[#ABD36B]')
+  document.getElementById('historyBtn').classList.remove('bg-[#ABD36B]')
+  showSectionById('donationSection')
+})
 
-//getting the button by their id
-  const donationButton=document.getElementById('donationBtn')
-  const historyButton=document.getElementById('historyBtn')
-  //active history button
-  historyButton.addEventListener('click',function(){
-    historyButton.classList.add('bg-[#ABD36B]')
-    donationButton.classList.remove('bg-[#ABD36B]')
-    window.location.href = 'history.html'
-  })
-  //active donation button
-  donationButton.addEventListener('click',function(){
-    donationButton.classList.add('bg-[#ABD36B]')
-    historyButton.classList.remove('bg-[#ABD36B]')
-    window.location.href = 'index.html'
-  })
-
-
-//donation amount setting
-const donateBtn = document.getElementById('donate-btn');
-//common function
+// Donation handling function
 function handleDonation(cardId) {
-    const inputValue = parseFloat(document.getElementById(`input-value-${cardId}`).value);
-    let totalBalance = parseFloat(document.getElementById(`totalDonation-${cardId}`).innerText)
-    let mainBalance = parseFloat(document.getElementById('main-balance').innerText); 
-    
-    if (inputValue > 0 && !isNaN(inputValue)) {
-        totalBalance += inputValue;
-        mainBalance -= inputValue;
+  const inputValue = parseFloat(document.getElementById(`input-value-${cardId}`).value);
+  let totalBalance = parseFloat(document.getElementById(`totalDonation-${cardId}`).innerText);
+  let mainBalance = parseFloat(document.getElementById('main-balance').innerText); 
+  
+  if (inputValue > 0 && !isNaN(inputValue) && mainBalance>inputValue) {
+      totalBalance += inputValue;
+      mainBalance -= inputValue;
 
-        // Update the donation amount for the specific card
-        document.getElementById(`totalDonation-${cardId}`).innerText = totalBalance + ' BDT';
-        document.getElementById('main-balance').innerText = mainBalance + ' BDT';
+      // Update the donation amount for the specific card
+      document.getElementById(`totalDonation-${cardId}`).innerText = totalBalance + ' BDT';
+      document.getElementById('main-balance').innerText = mainBalance + ' BDT';
 
-        // Update the modal with the donation amount
-        document.getElementById('modal-amount').innerText = inputValue + ' BDT';
+      // Update the modal with the donation amount
+      document.getElementById('modal-amount').innerText = inputValue + ' BDT';
 
-        // Show the modal
-        document.getElementById('successModal').classList.remove('hidden');
-        
-        
-       
+      // Add donation to history
+      // Find the parent card element by going up two levels from the donate button
+      const parentCard = document.getElementById(`input-value-${cardId}`).parentElement.parentElement;
 
-        // Clear input value
-        document.getElementById(`input-value-${cardId}`).value = '';
-    } else {
-        // error alert for invalid or negative input
-        alert('Please enter a valid positive number.');
-    }
+// Find the card title within the parent card
+      const cardTitle = parentCard.querySelector('.card-title').innerText;
+      const historyItem = document.createElement('div');
+      historyItem.style.border = '1px solid #ccc';
+      historyItem.style.margin = '8px 0'; 
+      historyItem.style.padding = '8px'; 
+      const currentDateTime = new Date();
+      historyItem.innerHTML = `<strong>${inputValue} BDT for "${cardTitle}"</strong><br>${currentDateTime.toLocaleString()}`;
+      document.getElementById('history-item').appendChild(historyItem);
+
+
+      // Show the modal
+      document.getElementById('successModal').classList.remove('hidden');
+
+      // Clear input value
+      document.getElementById(`input-value-${cardId}`).value = '';
+  } else {
+      // Error alert for invalid or negative input
+      alert('Please enter a valid positive number.');
+  }
 }
 
 // Close modal
 document.getElementById('closeModal').addEventListener('click', function() {
-    document.getElementById('successModal').classList.add('hidden');
+  document.getElementById('successModal').classList.add('hidden');
 });
 
-// Add event listeners to all donate buttons
-document.querySelectorAll('.donate-btn').forEach(function(button) {
-    button.addEventListener('click', function() {
-        const cardId = this.getAttribute('data-card');
-        handleDonation(cardId);
-    });
-});
+// Donate buttons
+const donateButtons = document.querySelectorAll('.donate-btn');
 
-
-
+// Loop through the NodeList
+for (let i = 0; i < donateButtons.length; i++) {
+  // Add event listener to each button
+  donateButtons[i].addEventListener('click', function() {
+      const cardId = this.getAttribute('data-card');
+      handleDonation(cardId);
+  });
+}
