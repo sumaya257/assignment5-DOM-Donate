@@ -1,28 +1,20 @@
 
-  // Getting the buttons by their ID
-  const donationBtn = document.getElementById('donationBtn');
-  const historyBtn = document.getElementById('historyBtn');
+//getting the button by their id
+  const donationButton=document.getElementById('donationBtn')
+  const historyButton=document.getElementById('historyBtn')
+  //active history button
+  historyButton.addEventListener('click',function(){
+    historyButton.classList.add('bg-[#ABD36B]')
+    donationButton.classList.remove('bg-[#ABD36B]')
+    window.location.href = 'history.html'
+  })
+  //active donation button
+  donationButton.addEventListener('click',function(){
+    donationButton.classList.add('bg-[#ABD36B]')
+    historyButton.classList.remove('bg-[#ABD36B]')
+    window.location.href = 'index.html'
+  })
 
-  // Define the active background color
-  const activeColor = '#ABD36B';
-  const inactiveColor = 'transparent';
-
-  // Function to toggle colors
-  function toggleColors(clickedButton, otherButton) {
-    clickedButton.style.backgroundColor = activeColor;
-    otherButton.style.backgroundColor = inactiveColor;
-  }
-
-  // Event listeners for both buttons
-  donationBtn.addEventListener('click', function(){
-    toggleColors(donationBtn, historyBtn);
-     window.location.href = 'index.html'
-  });
-
-  historyBtn.addEventListener('click', function(){
-    toggleColors(historyBtn, donationBtn);
-     window.location.href = 'history.html'
-  });
 
 //donation amount setting
 const donateBtn = document.getElementById('donate-btn');
@@ -45,6 +37,9 @@ function handleDonation(cardId) {
 
         // Show the modal
         document.getElementById('successModal').classList.remove('hidden');
+        
+        
+       
 
         // Clear input value
         document.getElementById(`input-value-${cardId}`).value = '';
@@ -66,3 +61,6 @@ document.querySelectorAll('.donate-btn').forEach(function(button) {
         handleDonation(cardId);
     });
 });
+
+
+

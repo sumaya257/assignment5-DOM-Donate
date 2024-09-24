@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font-awesome-CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Font CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"/>
+    <!-- DaisyUI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-poppins{
+          font-family: 'Poppins', sans-serif;
+        }
+      </style>
+</head>
+<body class="font-poppins">
+    <div class="navbar bg-[#f9f7f3] px-12 mb-20 bg-base-100 flex flex-col lg:flex-row sticky top-0 z-10">
+        <div class="navbar-start">
+         <a href="index.html"><h4 id="home-btn" class="btn btn-ghost text-xl px-8 bg-[#ABD36B]">Home</h4></a> 
+        </div>
+        <div class="navbar-center font-bold lg:flex lg:gap-5">
+          <img src="./assets/logo.png" alt="loading..">
+          <h4>Donate Bangladesh</h4>
+        </div>
+        <div class="navbar-end lg:flex lg:gap-3">
+            <img src="./assets/coin.png" alt="loading..">
+            <h4>5500 BDT</h4>
+        </div>
+      </div>
+       <!-- accordion -->
+       <div class="px-24">
+       <h2 class="text-3xl font-bold mb-6">Important FAQ</h2>
+        
+       <div class="collapse collapse-arrow bg-base-200 border py-6 bg-white">
+        <input type="radio" name="my-accordion-2" checked="checked" />
+        <div class="collapse-title text-xl font-medium">What is the DOM?</div>
+        <div class="collapse-content">
+          <p>The DOM (Document Object Model) is a programming interface for HTML and XML documents that represents the page's structure as objects and nodes.</p>
+        </div>
+      </div>
+
+
+      <div class="collapse collapse-arrow bg-base-200 border py-6 bg-white">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-xl font-medium">How do you select an element by its ID in the DOM?</div>
+        <div class="collapse-content">
+          <p>Use document.getElementById('elementID') to select an element by its ID.
+</p>
+        </div>
+      </div>
+
+
+      <div class="collapse collapse-arrow bg-base-200 border py-6 bg-white">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-xl font-medium">How do you add a new element to the DOM?</div>
+        <div class="collapse-content">
+          <p>You can use document.createElement('tagName') and then append it using parentElement.appendChild(newElement).</p>
+        </div>
+      </div>
+
+      <div class="collapse collapse-arrow bg-base-200 border py-6 bg-white">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-xl font-medium">How can you remove an element from the DOM?</div>
+        <div class="collapse-content">
+          <p>Use element.remove() to remove an element from the DOM.</p>
+        </div>
+      </div>
+    </div>
+ 
+
+    
+
+<script src="./index.js"></script>    
+   
+</body>
+</html>
