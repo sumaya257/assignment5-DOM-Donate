@@ -25,6 +25,9 @@
       </style>
 </head>
 <body class="font-poppins">
+     <!-- Wrapper to ensure full height -->
+     <div class="min-h-screen flex flex-col">
+
     <div class="navbar bg-[#f9f7f3] px-12 mb-20 bg-base-100 flex flex-col lg:flex-row sticky top-0 z-10">
         <div class="navbar-start">
         <a href="blog.html"> <h4 id="blog-btn" class="btn btn-ghost text-xl px-8 bg-[#ABD36B]">Blog</h4></a> 
@@ -125,13 +128,12 @@
 
 
 <!-- History Section -->
-<div id="historySection" class="hidden p-4 mx-24">
+<div id="historySection" class="hidden p-4 mx-24 flex-grow">
     <h2 class="text-3xl">Transaction History</h2>
     <div id="history-item" class="p-4">
         <!-- Transaction records will be populated here -->
     </div>
 </div>
-
 
 <!-- Modal -->
 <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
@@ -143,6 +145,11 @@
         <button id="closeModal" class="btn btn-primary mt-4">Close confirmation</button>
     </div>
 </div>
+<!-- footer -->
+<footer class="sticky bottom-0 bg-[#f9f7f3] w-full h-16 shadow-md"></footer>
+</footer>
+</div>
+
   
 <script src="./index.js"></script> 
  
